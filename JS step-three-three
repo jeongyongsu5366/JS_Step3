@@ -1,0 +1,42 @@
+const myReduce = (arr, callback, initialValue) => {
+    if(typeof initialValue === 'undefined') {
+      initialValue = 0;
+    }
+
+    for(let element of arr) {
+       initialValue = callback(initialValue, element, jkl);  
+    }
+
+    return initialValue;
+}
+
+let arr = [1,2,3,4,5]
+const suReduce = (arr, callback, acc) => {
+    for(let i = 0; i < arr.length; i++) {
+        acc = callback(acc , arr[i]);
+    }
+
+    return acc;
+}
+
+let user = suReduce(arr, (x, y) => (x + y), 10);
+console.log(user);
+// const result = myReduce(arr, (next,prev) => {...}, []);
+
+// let arr = [1,2,3,4,5];
+// const result = myReduce(arr, (x, y, z) => x + y);
+// console.log(result);
+
+
+// let arr = [1, 2, 3, 4, 5];
+// let sum = 0;
+// for(var i = 0; i < arr.length; i++) {
+//     sum += arr[i];
+// }
+// console.log(sum);
+
+
+
+// let arr = [1, 2, 3, 4, 5];
+// let sum = arr.reduce((x, y) => x + y);
+// console.log(sum);
