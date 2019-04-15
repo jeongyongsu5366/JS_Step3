@@ -1,0 +1,65 @@
+const data = {
+  debug: "on",
+  window: {
+      title: "Sample Konfabulator Widget",
+      name: "main_window",
+      width: 500,
+      height: 500
+  },
+  image: { 
+      src: "Images/Sun.png",
+      name: "sun1",
+      hOffset: 250,
+      vOffset: 250,
+      alignment: "center"
+  },
+  text: {
+      data: "Click Here",
+      size: 36,
+      style: "bold",
+      name: "text1",
+      hOffset: 250,
+      vOffset: 100,
+      alignment: "center",
+      onMouseUp: "sun1.opacity = (sun1.opacity / 100) * 90;"
+  }
+}
+
+
+function getFirstKeyValue(data) {
+    let storeKeyValue = [];
+    for(let key in data) {
+      storeKeyValue.push(key);  
+    }
+    
+    return getSecondKeyValue(data, storeKeyValue);
+}
+
+function getSecondKeyValue(data, storeKeyValue) {
+    let getSecondKey = []
+    for(let key = 0; key < storeKeyValue.length; key++) {
+      getSecondKey.push(data[storeKeyValue[key]]);
+    } 
+    
+    return getObjectHavingNumberValue(getSecondKey);
+}
+
+function getObjectHavingNumberValue(getSecondKey) {
+    let storeNumValueInKey = []
+    getSecondKey.forEach(objectOfKey => {
+      if(typeof objectOfKey === 'object') {
+        for(let key in objectOfKey) {
+            if(typeof objectOfKey[key] === "number") {
+              storeNumValueInKey.push(key); 
+            }
+        }
+      }
+   });
+
+    return storeNumValueInKey;
+}
+
+var x = getFirstKeyValue(data);
+console.log(x);
+
+https://learn.co/lessons/js-looping-and-iteration-traversing-nested-objects-readme
